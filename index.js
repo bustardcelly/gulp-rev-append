@@ -44,7 +44,6 @@ var revPlugin = function revPlugin() {
     }
 
     file.contents = new Buffer(lines.join('\n'));
-    console.log(file.contents.toString());
     cb(null, file);
 
   });
