@@ -74,7 +74,7 @@ why?
 ---
 I wanted to easily define dependencies that require cache-busting by appending the file declaration in an html file. The hash is based on file content, so any change to the dependency would result in a change to the generated and appended hash - effectively cahe-busting the dependency.
 
-## others
+### no, but why
 There are several gulp plugins that already support revisioning and cache-busting: [https://www.npmjs.org/search?q=gulp-rev](https://www.npmjs.org/search?q=gulp-rev)
 
 I created this plugin as it fit my needs more clearly in:
