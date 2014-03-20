@@ -48,7 +48,7 @@ That's fancy talk for any stylesheet or script declarations that are declared in
 </html>
 ```
 
-When run, the resulting target file will look like the following:
+will turn into something similar as the following after running `gulp-rev-append`:
 ```
 <!doctype html>
 <html>
@@ -65,3 +65,5 @@ When run, the resulting target file will look like the following:
 ```
 
 Any subsequent runs of the `gulp-rev-append` file will change the output _only_ if the target file(s) delcared have changed. This is because the revision hash is computed using the target file contents.
+
+The only requirement is that the dependency is declared with the appendage `?rev=`. `@@hash` is not required, and any value will be overriden as the dependency file contents change.
