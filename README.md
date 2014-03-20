@@ -76,7 +76,7 @@ I wanted to easily define dependencies that require simple cache-busting by usin
 
 __Be Warned__: Using query strings to cache-bust dependencies isn't fool proof. 
 
-[Google | Leverage Proxy Cache Article](https://developers.google.com/speed/docs/best-practices/caching?csw=1#LeverageProxyCaching)
+[Google | Leverage Proxy Cache Article](https://developers.google.com/speed/docs/best-practices/caching?csw=1#LeverageProxyCaching)  
 [Steve Souders | Revving Filenames: don't use querystring](http://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/)
 
 Other plugins that may work for your situation:
