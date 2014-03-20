@@ -1,6 +1,10 @@
+0.1.3 / 2014-03-20
+==================
+  * throw error on file.contents null.
+
 0.1.2 / 2014-03-19
 ==================
-  * removal of unnecessary console output
+  * removal of unnecessary console output.
   
 0.1.0 / 2014-03-19
 ==================
