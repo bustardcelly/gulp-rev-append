@@ -12,17 +12,25 @@ var revPlugin = function revPlugin() {
 
   return map(function(file, cb) {
 
-    var contents = file.contents.toString();
-    var lines = contents.split('\n');
-    var i, length = lines.length;
+    var contents;
+    var lines;
+    var i, length;
     var line;
     var groups;
     var dependencyPath;
     var data, hash;
 
     if(!file) {
-      throw new PluginError('gulp-rev', 'Missing fileName option for gulp-rev.');
+      throw new PluginError('gulp-rev-append', 'Missing file option for gulp-rev-append.');
     }
+
+    if(!file.contents) {
+      throw new PluginError('gulp-rev-append', 'Missing file.contents required for modifying files using gulp-rev-append.');
+    }
+
+    contents = file.contents.toString();
+    lines = contents.split('\n');
+    length = lines.length;
 
     for(i = 0; i < length; i++) {
       line = lines[i];
