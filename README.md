@@ -1,6 +1,6 @@
 gulp-rev-append
 ---
-> gulp task to cache-bust files using file hash
+> gulp task to cache-busting files using file hash
 
 installation
 ---
@@ -22,6 +22,7 @@ gulp.task('rev', function() {
 
 ```
 
+_terminal_
 ```
 $ gulp rev
 ```
