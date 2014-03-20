@@ -83,7 +83,7 @@ I created this plugin as it fit my needs more clearly in:
 * not requiring additionally markup commenting
 * not generating an additional manifest to be a dependency in file access for production-level application
 
-If the intent of this plugin does not meet your needs, I implore you to investigate the other possible [solutions](https://www.npmjs.org/search?q=gulp-rev).
+If the intent of this plugin does not meet your needs, please checkout the other possible [solutions](https://www.npmjs.org/search?q=gulp-rev) made by some awesome developers.
 
 Tests
 ---
