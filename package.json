@@ -1,6 +1,6 @@
 {
   "name": "gulp-rev-append",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Cache-busting plugin for gulp.",
   "main": "index.js",
   "repository": {
