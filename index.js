@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 var map = require('event-stream').map;
 
-var FILE_DECL = /(?:href|src)=['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
+var FILE_DECL = /(?:href=|src=|url\()['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
 
 var revPlugin = function revPlugin() {
 
@@ -48,6 +48,7 @@ var revPlugin = function revPlugin() {
         }
       }
       lines[i] = line;
+      console.log(line);
       FILE_DECL.lastIndex = 0;
     }
 

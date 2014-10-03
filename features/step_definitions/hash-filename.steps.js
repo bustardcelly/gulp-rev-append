@@ -3,8 +3,6 @@ var expect = chai.expect;
 var File = require('gulp-util').File;
 var Buffer = require('buffer').Buffer;
 
-var FILE_DECL = /(?:href|src)=['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
-
 module.exports = function() {
   'use strict';
 
@@ -32,13 +30,14 @@ module.exports = function() {
   });
 
   this.Then(/^The depencies are appended with a hash inline$/, function (callback) {
-    var declarations = result.match(FILE_DECL);
+    var fileDeclarationRegex = this.FILE_DECL;
+    var declarations = result.match(fileDeclarationRegex);
     // defined in test/fixtures/static/index.html
     expect(declarations.length).to.equal(3);
     for(var i = 0; i < declarations.length; i++) {
       // plugin should change @@hash to hash based on file contents
-      expect(FILE_DECL.exec(declarations[i])[2]).to.not.equal('@@hash');
-      FILE_DECL.lastIndex = 0;
+      expect(fileDeclarationRegex.exec(declarations[i])[2]).to.not.equal('@@hash');
+      fileDeclarationRegex.lastIndex = 0;
     }
     callback();
   });
