@@ -48,7 +48,6 @@ var revPlugin = function revPlugin() {
         }
       }
       lines[i] = line;
-      console.log(line);
       FILE_DECL.lastIndex = 0;
     }
 
