@@ -28,12 +28,12 @@ var revPlugin = function revPlugin() {
       line = lines[i];
       groups = FILE_DECL.exec(line);
       if(groups && groups.length > 1) {
-
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
-        if (normPath.indexOf(path.sep) == 0) {
+        if (normPath.indexOf(path.sep) === 0) {
           dependencyPath = path.join(file.base, normPath);
-        } else {
+        } 
+        else {
           dependencyPath = path.resolve(path.dirname(file.path), normPath);
         }
 

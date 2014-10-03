@@ -3,7 +3,7 @@ var expect = chai.expect;
 var File = require('gulp-util').File;
 var Buffer = require('buffer').Buffer;
 
-var FILE_DECL = /(?:href|src)="(.*)[\?]rev=(.*)[\"]/gi;
+var FILE_DECL = /(?:href|src)=['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
 
 module.exports = function() {
   'use strict';
@@ -17,7 +17,7 @@ module.exports = function() {
       cwd: 'test/fixtures/',
       base: 'test/fixtures/static',
       path: 'test/fixtures/static/index.html',
-      contents: new Buffer(this.htmlFileContents)
+      contents: new Buffer(this.htmlFileContents('index'))
     });
     callback();
   });
