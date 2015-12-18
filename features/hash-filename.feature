@@ -7,3 +7,8 @@ Feature: Use gulp-rev-append to modify dependency declaration in html file
     Given I have declared dependencies in an html file with revision tokens
     When I invoke the gulp-rev-append plugin
     Then The depencies are appended with a hash inline
+
+  Scenario: Has does not remove attributes of element following the 'rev' declaration
+    Given I have declared an image dependency in an html file with revision tokens
+    When I invoke the gulp-rev-append plugin
+    Then The attributes following the revision tokens are preserved

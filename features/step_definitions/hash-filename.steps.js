@@ -1,5 +1,6 @@
 var chai = require('chai');
 var expect = chai.expect;
+var cheerio = require('cheerio');
 var File = require('gulp-util').File;
 var Buffer = require('buffer').Buffer;
 
@@ -16,6 +17,16 @@ module.exports = function() {
       base: 'test/fixtures/static',
       path: 'test/fixtures/static/index.html',
       contents: new Buffer(this.htmlFileContents('index'))
+    });
+    callback();
+  });
+
+  this.Given(/^I have declared an image dependency in an html file with revision tokens$/, function (callback) {
+    this.indexFile = new File({
+      cwd: 'test/fixtures/',
+      base: 'test/fixtures/static',
+      path: 'test/fixtures/static/image-element-post-class.html',
+      contents: new Buffer(this.htmlFileContents('image-element-post-class'))
     });
     callback();
   });
@@ -41,5 +52,14 @@ module.exports = function() {
     }
     callback();
   });
+
+  this.Then(/^The attributes following the revision tokens are preserved$/, function (callback) {
+    var $ = cheerio.load(result);
+    var classDeclaration = $('img').attr('class');
+    expect(classDeclaration).to.not.be.undefined;
+    expect(classDeclaration).to.equal('pull-right company-logo media-object');
+    callback();
+  });
+
 
 };
