@@ -8,7 +8,11 @@ var map = require('event-stream').map;
 
 var FILE_DECL = /(?:href=|src=|url\()['|"]([^\s>"']+?)\?rev=([^\s>"']+?)['|"]/gi;
 
-var revPlugin = function revPlugin() {
+var revPlugin = function revPlugin(options) {
+  var defaults = {
+    gulpRelative: false,
+  }
+  var options = Object.assign({}, defaults, options);
 
   return map(function(file, cb) {
 
@@ -38,7 +42,10 @@ var revPlugin = function revPlugin() {
       if(groups && groups.length > 1) {
         // are we an "absoulte path"? (e.g. /js/app.js)
         var normPath = path.normalize(groups[1]);
-        if (normPath.indexOf(path.sep) === 0) {
+        if (options.gulpRelative) {
+          dependencyPath = path.join('.', normPath);
+        }
+        else if (normPath.indexOf(path.sep) === 0) {
           dependencyPath = path.join(file.base, normPath);
         } 
         else {
