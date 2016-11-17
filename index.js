@@ -17,6 +17,7 @@ var revPlugin = function revPlugin() {
     var i, length;
     var line;
     var groups;
+    var declarations;
     var dependencyPath;
     var data, hash;
 
@@ -34,29 +35,34 @@ var revPlugin = function revPlugin() {
 
     for(i = 0; i < length; i++) {
       line = lines[i];
-      groups = FILE_DECL.exec(line);
-      if(groups && groups.length > 1) {
-        // are we an "absoulte path"? (e.g. /js/app.js)
-        var normPath = path.normalize(groups[1]);
-        if (normPath.indexOf(path.sep) === 0) {
-          dependencyPath = path.join(file.base, normPath);
-        } 
-        else {
-          dependencyPath = path.resolve(path.dirname(file.path), normPath);
-        }
+      declarations = line.match(FILE_DECL);
+      if (declarations && declarations.length > 0) {
+        for(var j = 0; j < declarations.length; j++) {
+          groups = FILE_DECL.exec(declarations[j]);
+          if(groups && groups.length > 1) {
+            // are we an "absoulte path"? (e.g. /js/app.js)
+            var normPath = path.normalize(groups[1]);
+            if (normPath.indexOf(path.sep) === 0) {
+              dependencyPath = path.join(file.base, normPath);
+            }
+            else {
+              dependencyPath = path.resolve(path.dirname(file.path), normPath);
+            }
 
-        try {
-          data = fs.readFileSync(dependencyPath);
-          hash = crypto.createHash('md5');
-          hash.update(data.toString(), 'utf8');
-          line = line.replace(groups[2], hash.digest('hex'));
+            try {
+              data = fs.readFileSync(dependencyPath);
+              hash = crypto.createHash('md5');
+              hash.update(data.toString(), 'utf8');
+              line = line.replace(groups[2], hash.digest('hex'));
+            }
+            catch(e) {
+              // fail silently.
+            }
+          }
+          FILE_DECL.lastIndex = 0;
         }
-        catch(e) {
-          // fail silently.
-        }
+        lines[i] = line;
       }
-      lines[i] = line;
-      FILE_DECL.lastIndex = 0;
     }
 
     file.contents = new Buffer(lines.join('\n'));

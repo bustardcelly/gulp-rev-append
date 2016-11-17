@@ -6,4 +6,4 @@ Feature: Use gulp-rev-append to modify absolute dependency declaration in html f
   Scenario: Hash is appended to absolute file dependency inline
     Given I have declared absolute dependencies in an html file with revision tokens
     When I invoke the gulp-rev-append plugin
-    Then The depencies are appended with a hash inline
+    Then The dependencies are appended with a hash inline
