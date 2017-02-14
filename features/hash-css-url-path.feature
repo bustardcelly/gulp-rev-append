@@ -7,3 +7,8 @@ Feature: Use gulp-rev-append to modify css url() dependency declaration in html 
     Given I have declared dependencies in an html file using css url() with revision tokens
     When I invoke the gulp-rev-append plugin
     Then The dependencies are appended with a hash inline
+
+    Scenario: Hash is appended to file dependency defined with css background url()
+    Given I have declared dependencies in an html file using css background url() with revision tokens
+    When I invoke the gulp-rev-append plugin
+    Then The dependencies are appended with a hash inline

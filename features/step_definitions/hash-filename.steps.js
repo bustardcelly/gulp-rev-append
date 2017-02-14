@@ -41,6 +41,16 @@ module.exports = function() {
     callback();
   });
 
+  this.Given(/^I have declared dependencies in an html file with revision tokens$/, function (callback) {
+    this.indexFile = new File({
+      cwd: 'test/fixtures/',
+      base: 'test/fixtures/static',
+      path: 'test/fixtures/static/multiple-index.html',
+      contents: new Buffer(this.htmlFileContents('multiple-index'))
+    });
+    callback();
+  });
+
   this.When(/^I invoke the gulp\-rev\-append plugin$/, function (callback) {
     var revver = this.plugin();
     revver.on('data', function(data) {
@@ -84,6 +94,5 @@ module.exports = function() {
     expect(classDeclaration).to.equal('pull-right company-logo media-object');
     callback();
   });
-
 
 };
