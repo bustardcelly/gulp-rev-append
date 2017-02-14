@@ -89,7 +89,7 @@ I created this plugin as it fit my needs more clearly in:
 * not requiring additionally markup commenting to declare dependencies to be modified
 * not generating an additional manifest to be a dependency in file access for production-level application
 
-For its particular use, I am not concerned with firewalls or proxy cache; I was trying to develop a simple web-based mobile site on a desktop while testing on devices and cache-ing was giving me a headache. I did not want to modify my workflow and build to accomidate an addition cache-manifest, nor did I foresee my work being in production in which I needed to support a more robust cache-busting technique.
+For its particular use, I am not concerned with firewalls or proxy cache; I was trying to develop a simple web-based mobile site on a desktop while testing on devices and cache-ing was giving me a headache. I did not want to modify my workflow and build to accommodate an addition cache-manifest, nor did I foresee my work being in production in which I needed to support a more robust cache-busting technique.
 
 If the intent of this plugin does not meet your needs, please checkout the other possible [solutions](https://www.npmjs.org/search?q=gulp-rev) made by some awesome developers.
 
