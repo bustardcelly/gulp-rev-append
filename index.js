@@ -56,7 +56,7 @@ var revPlugin = function revPlugin() {
               line = line.replace(groups[2], hash.digest('hex'));
             }
             catch(e) {
-              // fail silently.
+              gutil.log(gutil.colors.red("Error: " + e));
             }
           }
           FILE_DECL.lastIndex = 0;
